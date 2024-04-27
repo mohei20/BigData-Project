@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+ <div class="main">
+        <div class="container mt-5">
+          <div class="transfers-panel">
+            <form method='POST' >
+              {% csrf_token %}
+              <h2>Add New Transfer</h2>
+              <div class="row inputs">
+                <div class="col-12 col-md-6 mb-4">
+                  <div class="input-field">
+                    <label>Player Name</label>
+                    <input
+                      type="text"
+                      placeholder="Player's Name"
+                      name="name"
+                    />
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 mb-4">
+                  <div class="input-field">
+                    <label>Position</label>
+                    <select name="position">
+                      {% for position in positions %}
+                      <option value="{{ position }}">{{ position }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 mb-4">
+                  <div class="input-field">
+                    <label>Age</label>
+                    <input
+                      type="number"
+                      placeholder="Player's Age"
+                      name="age"
+                      min="15"
+                      max="40"
+                    />
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 mb-4">
+                  <div class="input-field">
+                    <label>Origin Club</label>
+                    <select name="origin_club">
+                      {% for club in origin_clubs %}
+                      <option value="{{ club }}">{{ club }}</option>
+                      {% endfor %}
+                  </select>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 mb-4">
+                  <div class="input-field">
+                    <label>League Origin Club</label>
+                    <select name="league_origin_club">
+                      {% for league in leagues_origin_club %}
+                      <option value="{{ league }}">{{ league }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 mb-4">
+                  <div class="input-field">
+                    <label> Origin Country</label>
+                    <select name="country_origin_club">
+                      {%for country in countries_origin_club %}
+                      <option value="{{ country }}">{{ country }}</option>
+                      {%endfor%}
+                    </select>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 mb-4">
+                  <div class="input-field">
+                    <label>New Club</label>
+                    <select name="new_club">
+                      {%for new_club in new_clubs%}
+                      <option value="{{new_club}}">{{new_club}}</option>
+                      {%endfor%}
+                    </select>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 mb-4">
+                  <div class="input-field">
+                    <label>New League</label>
+                    <select name="league_new_club">
+                      {% for league_new_club in leagues_new_club%}
+                      <option value="{{league_new_club}}">{{league_new_club}}</option>
+                      {%endfor%}
+                    </select>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 mb-4">
+                  <div class="input-field">
+                    <label>New Country</label>
+                    <select name="country_new_club">
+                      {% for country_new_club in  countries_new_club%}
+                      <option value="{{country_new_club}}">{{country_new_club}}</option>
+                      {%endfor%}
+                    </select>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 mb-4">
+                  <div class="input-field">
+                    <label>Player Value</label>
+
+                    <input
+                      type="text"
+                      name="player_valuje"
+                      placeholder="type player value"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">
+                  Add Transfer
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+{% endblock content %}

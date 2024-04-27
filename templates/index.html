@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+ <div class="main homepage">
+        <div class="main-header p-5">
+          <div class="container">
+            <div class="header-info">
+              <h1>Football Transfers 2022</h1>
+              <span class="text-muted"
+                >Here you can find all details about 2022 mercato ...</span
+              ><br />
+              <span class="text-muted">Club and players details</span>
+            </div>
+          </div>
+        </div>
+        <div class="container mt-5">
+          <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+              <div class="stat-box">
+                <!-- <i class="fa-solid fa-shirt"></i> -->
+                <div class="box-head d-flex align-items-center mb-2">
+                  <i
+                    class="fa-solid fa-person-walking-dashed-line-arrow-right"
+                  ></i>
+                  <p class="m-0">Total Transfers</p>
+                </div>
+                <p class="stats">{{countAlltransfer}}</p>
+                <p>Players changed their teams</p>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+              <div class="stat-box">
+                <div class="box-head d-flex align-items-center mb-2">
+                  <i class="fa-solid fa-people-group"></i>
+                  <p class="m-0">most club purchase player</p>
+                </div>
+                <p class="stats"> {{mostClubPurchase.new_club}}</p>
+                <p>Count of Transfer :  {{mostClubPurchase.count}}</p>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+              <div class="stat-box">
+                <div class="box-head d-flex align-items-center mb-2">
+                  <i class="fa-solid fa-person-dress-burst"></i>
+                  <p class="m-0">Older Player</p>
+                </div>
+                <p class="stats">{{olderPlayer.name}}</p>
+                <p>Age : {{olderPlayer.age}}</p>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+              <div class="stat-box">
+                <div class="box-head d-flex align-items-center mb-2">
+                  <i class="fa-solid fa-person-dress-burst"></i>
+                  <p class="m-0">Younger Player</p>
+                </div>
+                <p class="stats">{{youngerPlayer.name}}</p>
+                <p>Age : {{youngerPlayer.age}}</p>
+              </div>
+            </div>
+
+             <div class="col-12 col-md-6 col-lg-4 mb-4">
+              <div class="stat-box">
+                <div class="box-head d-flex align-items-center mb-2">
+                  <i class="fa-solid fa-person-dress-burst"></i>
+                  <p class="m-0">Top Player</p>
+                </div>
+                <p class="stats">{{topPlayer.name}}</p>
+                <p>Market Value : {{topPlayer.player_valuje}}</p>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+              <div class="stat-box">
+                <div class="box-head d-flex align-items-center mb-2">
+                  <i class="fa-solid fa-trophy"></i>
+                  <p class="m-0">Latest League Purchase Player</p>
+                </div>
+                <p class="stats">{{letestLeguaPurchase.new_legua}}</p>
+                <p>Count of Transfer : {{letestLeguaPurchase.count}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock content %}

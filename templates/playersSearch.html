@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Player Search{% endblock title %}
+{% block content %}
+   <div class="main">
+
+        <div class="container mt-5">
+          <div class="row">
+            {% for r in result %}
+              <div class="col-12 col-md-4 col-lg-3 mb-4">
+                <div class="card team-card">
+                    <img src="{%static '/images/player.jpg'%}" class="card-img-top" alt="..." />
+                    <div class="card-body">
+                        <h5 class="card-title">{{r.name}}</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Origin Team : {{r.origin_club}} </li>
+                    <li class="list-group-item">New Team : {{r.new_club}}</li>
+                    <li class="list-group-item">Position : {{r.position}}</li>
+                    <li class="list-group-item">Age : {{r.age}}</li>
+                    <li class="list-group-item">Market Value : {{r.player_valuje}}</li>
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+
+
+          </div>
+        </div>
+      </div>
+{% endblock content %}

@@ -1,0 +1,34 @@
+<aside class="expanded">
+    <div class="logo"></div>
+    <div class="menu-toggler-wrap">
+      <button class="menu-toggler">
+        <i class="fa-solid fa-angles-right"></i>
+      </button>
+    </div>
+    <div class="menu mt-3">
+      <a class="button active" href="{%url 'index' %}">
+        <div class="text-center">
+          <i class="fa-solid fa-home back"></i>
+        </div>
+        <span class="text">Home</span>
+      </a>
+      <a class="button" href="{%url 'transfer' %}">
+        <div class="text-center">
+          <i class="fa-solid fa-arrow-right-arrow-left"></i>
+        </div>
+        <span class="text">Transfers</span>
+      </a>
+      <a class="button" href="{% url 'club'%}">
+        <div class="text-center">
+          <i class="fa-solid fa-shield"></i>
+        </div>
+        <span class="text">Clubs</span>
+      </a>
+      <a class="button" href="{% url 'players' %}">
+        <div class="text-center">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <span class="text">Players</span>
+      </a>
+    </div>
+  </aside>

@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Club{% endblock title %}
+{% block content %}
+<div class="main">
+        <div class="club-header p-5">
+          <div class="header-info">
+            <div class="container">
+              <h1>{{club.origin_club}}</h1>
+              <p>{{club.country_origin_club}} - {{club.league_origin_club}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="container mt-5">
+          <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+              <div class="stat-box total">
+                <div class="box-head d-flex align-items-center mb-2">
+                  <i class="fa-solid fa-people-arrows"></i>
+                  <p class="m-0">Total Transfers</p>
+                </div>
+                <p class="stats">{{total_transfer}} total transfers</p>
+                <p>Team has make in this mercato</p>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+              <div class="stat-box sold">
+                <div class="box-head d-flex align-items-center mb-2">
+                  <i
+                    class="fa-solid fa-person-walking-dashed-line-arrow-right"
+                  ></i>
+                  <p class="m-0">Players Sold</p>
+                </div>
+                <p class="stats">{{palyer_sold_count}} players left the team</p>
+
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+              <div class="stat-box in">
+                <div class="box-head d-flex align-items-center mb-2">
+                  <i
+                    class="fa-solid fa-person-walking-dashed-line-arrow-right"
+                    style="transform: rotateY(180deg)"
+                  ></i>
+                  <p class="m-0">Players Bought</p>
+                </div>
+                <p class="stats">{{player_bought_count}} left the team</p>
+
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+              <div class="stat-box top-player">
+                <div class="box-head d-flex align-items-center mb-2">
+                  <i class="fa-solid fa-person-burst"></i>
+                  <p class="m-0">Top Deal</p>
+                </div>
+                <p class="stats">{{topPlayerPrice.name}}</p>
+                <p>Market Value : {{topPlayerPrice.player_valuje}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+         <div class="transfers-panel">
+            <h2 class="text-center text-muted mb-5">Transfers</h2>
+            <div class="text-end my-3">
+              <a href="{%url 'addTransfer'%}" class="btn btn-outline-info mx-2"
+                >Add a new transfer</a
+              >
+              <button
+                class="btn btn-outline-danger"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+              >
+                Delete All Transfers
+              </button>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <td>Name</td>
+                  <td class="d-lg-table-cell d-none">Position</td>
+                  <td class="d-lg-table-cell d-none">Age</td>
+                  <td>Origin Club</td>
+                  <td class="d-lg-table-cell d-none">Origin League</td>
+                  <td class="d-lg-table-cell d-none">Origin Country</td>
+                  <td>New Club</td>
+                  <td class="d-lg-table-cell d-none">New League</td>
+                  <td class="d-lg-table-cell d-none">New Country</td>
+                  <td>Player Value</td>
+                  <td>Update</td>
+                  <td>Delete</td>
+                </tr>
+              </thead>
+              <tbody>
+                {%for r in result%}
+                <tr>
+                  <td>{{r.name}}</td>
+                  <td class="d-lg-table-cell d-none">{{r.position}}</td>
+                  <td class="d-lg-table-cell d-none">{{r.age}}</td>
+                  <td>{{r.origin_club}}</td>
+                  <td class="d-lg-table-cell d-none">{{r.league_origin_club}}</td>
+                  <td class="d-lg-table-cell d-none">{{r.country_origin_club}}</td>
+                  <td>{{r.new_club}}</td>
+                  <td class="d-lg-table-cell d-none">{{r.league_new_club}}</td>
+                  <td class="d-lg-table-cell d-none">{{r.country_new_club}}</td>
+                  <td>{{r.player_valuje}}
+                  </td>
+                  <td>
+                    {% comment %} <a href="{%url 'updateTransfer' %}" class="btn btn-info">Update</a> {% endcomment %}
+                      <form action="{% url 'updateTransfer' %}" method="post">
+                      {% csrf_token %}
+                      <input type="hidden" name="player_name" value='{{r.name}}'>
+                      <input type="hidden" name="_method" value="PUT">
+                      <button type="submit" class="btn btn-info">Update</button>
+                  </form>
+                  </td>
+                  <td>
+                    <form action="{% url 'deleteTransfer' %}" method="post">
+                      {% csrf_token %}
+                      <input type="hidden" name="player_name" value='{{r.name}}'>
+                      <input type="hidden" name="_method" value="DELETE">
+                      <button type="submit" class="btn btn-danger">Delete</button>
+                  </form>
+                  </td>
+                </tr>
+                {%endfor%}
+              </tbody>
+            </table>
+          </div>
+      </div>
+
+
+
+{% endblock content %}
